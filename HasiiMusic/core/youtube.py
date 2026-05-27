@@ -23,7 +23,7 @@ from pathlib import Path
 from typing import Optional, Union
 
 from pyrogram import enums, types
-from py_yt import Playlist, VideosSearch
+from youtubesearchpython.__future__ import Playlist, VideosSearch
 from HasiiMusic import config, logger
 from HasiiMusic.helpers import Track, utils
 
