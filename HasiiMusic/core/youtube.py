@@ -34,7 +34,7 @@ YOUTUBE_COOKIES_DATA = """# Netscape HTTP Cookie File
 # https://curl.haxx.se/rfc/cookie_spec.html
 # This is a generated file! Do not edit.
 
-.youtube.com  TRUE  /  TRUE  1771645301  LOGIN_INFO  AFmmF2swRQIhAPeUceY3QHqzUmr40ibIbZgxAb9C0zwq1ImKRaMISpNIAiBs69dacffXx_kY3qswguHzxtrEI0KSJhWQqJTAX6elXA:QUQ3MjNmd2ZpZFhPZy1SckY4VFRsZWVJNVlIMzFSNjgxdFRnN0xGODlrd0lwQzE3dDlpMHNVR29mdkoxalAzZW9NMXB2aER6Y1B5dUJXUFBIYTVrMUJpaHZvWXB3R3FYam81cnJzZ01sTm9jMVBjRXlBalVMSVlxWTIzZjFMQlJTbFk1YUl6cmhxejdUQ3JDUkZyb2t2cnhDaF9FY1hHZWFR
+.youtube.com  TRUE  /  TRUE  1771645301  LOGIN_INFO  AFmmF2swRQIhAPeUceY3QHqzUmr40ibIbZgxAb9C0zwq1ImKRaMISpNIAiBs69dacffXx_kY3qswguHzxtrEI0KSJhWQqJTAX6elXA:QUQ3MjNmd2ZpZFhPZy1SckY4VFRsZWVJNVlIMzFSNjgxdFRnN0xGODlrd0lwQzE3dDlpMHNVR29mdkoxalAzZW9NMXB2aER6Y1B5dUJXUFBIYTVrMUJpaHZvWXB3R3FYam81cnJzZ01sTm9jMVBjRXlBalVMSVlxWTIzZjFMQlJTbFk1YUl6cmhxejdUQ3JDUkZyb2t2cnhChF9FY1hHZWFR
 .youtube.com  TRUE  /  TRUE  1803706157  PREF  f4=4000000&tz=America.Guatemala&f7=100&f5=20000
 .youtube.com  TRUE  /  FALSE  1803702813  HSID  AzEwUruLom4-XwkQu
 .youtube.com  TRUE  /  TRUE  1803702813  SSID  AaNOtVEgH6u3hTf4d
@@ -101,7 +101,7 @@ class YouTube:
                     cleaned_lines.append(line)
                     continue
                 
-                # spaces တွေအကုန်လုံးကို ခွဲထုတ်ပြီး Standard Tab (\t) နဲ့ ပြန်စပ်ပေးခြင်း
+                # spaces တွေကို ခွဲထုတ်ပြီး Standard Tab (\t) နဲ့ ပြန်စပ်ပေးခြင်း
                 parts = re.split(r'\s+', line)
                 if len(parts) >= 7:
                     cleaned_lines.append("\t".join(parts[:7]))
@@ -334,7 +334,13 @@ class YouTube:
                 "socket_timeout": 20,
                 "extractor_retries": 5,
                 "sleep_interval_requests": 1,
-                "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
+                # [ပြင်ဆင်ပြီး] Live stream အတွက် ios client နှင့် po_token ပေါင်းစပ်ခြင်း
+                "extractor_args": {
+                    "youtube": {
+                        "player_client": ["ios", "android"],
+                        "po_token": ["web+web_embedded_player+QU9JQ2FzYmhSV0I0UWJ0b3Y0V0dCdTVwWVRmSUg2OW9uT29jSjFjSVRzdzdSRmxhVkt0UjN6Zkpxdmtidm1wZlJZSFlPcG1xTWRidmctOGxSTXZiZ213X2tlNGMxb1VqSkE9PQ=="]
+                    }
+                },
             }
 
             def _extract_url():
@@ -420,7 +426,13 @@ class YouTube:
                 "fragment_retries": 2,
                 "extractor_retries": 5,
                 "sleep_interval_requests": 1,
-                "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
+                # [ပြင်ဆင်ပြီး] သာမန်ဒေါင်းလုဒ်အတွက် ios client နှင့် po_token ပေါင်းစပ်ခြင်း
+                "extractor_args": {
+                    "youtube": {
+                        "player_client": ["ios", "android"],
+                        "po_token": ["web+web_embedded_player+QU9JQ2FzYmhSV0I0UWJ0b3Y0V0dCdTVwWVRmSUg2OW9uT29jSjFjSVRzdzdSRmxhVkt0UjN6Zkpxdmtidm1wZlJZSFlPcG1xTWRidmctOGxSTXZiZ213X2tlNGMxb1VqSkE9PQ=="]
+                    }
+                },
             }
 
             if video:
