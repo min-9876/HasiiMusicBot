@@ -79,8 +79,8 @@ class Config:
 
         # ============ SUPPORT LINKS ============
         self.SUPPORT_CHANNEL: str = getenv(
-            "SUPPORT_CHANNEL", "https://t.me/hasiimusic")
-        self.SUPPORT_CHAT: str = getenv("SUPPORT_CHAT", "https://t.me/TheInfinityAI")
+            "SUPPORT_CHANNEL", "https://t.me/myanmarbot_music")
+        self.SUPPORT_CHAT: str = getenv("SUPPORT_CHAT", "https://t.me/myanmar_music_Bot2027")
 
         # ============ EXCLUDED CHATS ============
         # Parse comma-separated chat IDs that assistants should never leave
