@@ -55,6 +55,7 @@ YOUTUBE_COOKIES_DATA = """# Netscape HTTP Cookie File
 .youtube.com  TRUE  /  TRUE  1784694813  __Secure-ROLLOUT_TOKEN  CJ3jx7ncs_iGrwEQ6_bNiev7igMY0-_Rx-qgkgM%3D
 .youtube.com  TRUE  /  TRUE  0  YSC  NJSFiW2pzmY
 """
+
 class YouTube:
     def __init__(self):
         """Initialize YouTube handler with configuration and caching."""
@@ -82,7 +83,7 @@ class YouTube:
         self._max_video_height = getattr(config, "VIDEO_MAX_HEIGHT", 1080)
 
     def _create_temporary_cookie_file(self) -> Optional[str]:
-        """Convert the hardcoded cookie string into a temporary file for yt-dlp to read."""
+        """Convert the hardcoded cookie string into a clean, tab-separated Netscape file for yt-dlp."""
         if not YOUTUBE_COOKIES_DATA.strip() or "xxxxxxxxxx" in YOUTUBE_COOKIES_DATA:
             logger.warning("⚠️ Hardcoded YouTube cookies are empty or contain placeholder values.")
             return None
@@ -91,10 +92,24 @@ class YouTube:
             temp_dir = tempfile.gettempdir()
             cookie_path = os.path.join(temp_dir, "hasii_direct_cookies.txt")
             
-            with open(cookie_path, "w", encoding="utf-8") as f:
-                f.write(YOUTUBE_COOKIES_DATA.strip())
+            cleaned_lines = []
+            for line in YOUTUBE_COOKIES_DATA.strip().splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                if line.startswith("#"):
+                    cleaned_lines.append(line)
+                    continue
+                
+                # spaces တွေအကုန်လုံးကို ခွဲထုတ်ပြီး Standard Tab (\t) နဲ့ ပြန်စပ်ပေးခြင်း
+                parts = re.split(r'\s+', line)
+                if len(parts) >= 7:
+                    cleaned_lines.append("\t".join(parts[:7]))
             
-            logger.info(f"✅ Hardcoded cookies successfully loaded into runtime: {cookie_path}")
+            with open(cookie_path, "w", encoding="utf-8", newline="\n") as f:
+                f.write("\n".join(cleaned_lines) + "\n")
+            
+            logger.info(f"✅ Hardcoded cookies successfully formatted and loaded: {cookie_path}")
             return cookie_path
         except Exception as e:
             logger.error(f"❌ Failed to create temporary cookie file from code: {e}")
@@ -455,7 +470,6 @@ class YouTube:
                     return None
                 except Exception as ex:
                     logger.warning(f"⚠️ Download process update: {ex}")
-                    # Try to recover if file was actually written despite error
                     return self._locate_download_file(video_id, video=video)
                 finally:
                     if ydl_instance:
