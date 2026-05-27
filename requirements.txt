@@ -5,15 +5,15 @@
 # Installation: pip install -r requirements.txt
 # ==============================================================================
 
-aiohttp~=3.13.3
-kurigram>=2.2.17
-pillow~=12.1.0
-psutil~=7.2.1
-pymongo>=4.16.0
-pytgcrypto>=1.2.11
-py-tgcalls~=2.2.10
-py-yt>=1.1.2
-python-dotenv~=1.2.1
+aiohttp~=3.13.5
+kurigram~=2.2.22
+pillow~=12.2.0
+psutil~=7.2.2
+pymongo~=4.17.0
+pytgcrypto~=1.2.12
+py-tgcalls~=2.2.11
+yt-search-python
+python-dotenv~=1.2.2
 
-# YouTube အပိတ်အဆို့များကို ကျော်ဖြတ်နိုင်ရန် Standard ပုံစံအတိုင်း ဗားရှင်းအသစ်ကို သတ်မှတ်ခြင်း
-yt-dlp[default]>=2026.03.13
+# YouTube ဒေါင်းလုဒ် ဆာဗာပိတ်ဆို့မှုများကို ကျော်ဖြတ်ရန် Git မူရင်း Source မှ တိုက်ရိုက်ဆွဲယူခြင်း
+yt-dlp[default] @ git+https://github.com/yt-dlp/yt-dlp.git
