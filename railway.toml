@@ -1,7 +1,8 @@
 [build]
-builder = "NIXPACK"
+# builder နေရာကို ဖျက်ပြီး ဒါပဲချန်ထားပါမယ်
 
-[providers.node]
+[build.nixpack]
+# nixpack အတွက် လိုအပ်တဲ့ ဆော့ဖ်ဝဲလ်တွေကို ဒီလိုပြောင်းထည့်ပါမယ်
 pkgs = ["ffmpeg", "deno"]
 
 [deploy]
