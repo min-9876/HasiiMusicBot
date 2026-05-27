@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import Optional, Union
 
 from pyrogram import enums, types
+# [ပြင်ဆင်ပြီး] yt-search-python Package ၏ Standard Async ရေးထုံးအတိုင်း ပြောင်းလဲခြင်း
 from youtubesearchpython.__future__ import Playlist, VideosSearch
 from HasiiMusic import config, logger
 from HasiiMusic.helpers import Track, utils
@@ -334,7 +335,7 @@ class YouTube:
                 "socket_timeout": 20,
                 "extractor_retries": 5,
                 "sleep_interval_requests": 1,
-                # [ပြင်ဆင်ပြီး] Live stream အတွက် ios client နှင့် po_token ပေါင်းစပ်ခြင်း
+                # Live stream အတွက် ios client နှင့် po_token ပေါင်းစပ်ခြင်း
                 "extractor_args": {
                     "youtube": {
                         "player_client": ["ios", "android"],
@@ -426,7 +427,7 @@ class YouTube:
                 "fragment_retries": 2,
                 "extractor_retries": 5,
                 "sleep_interval_requests": 1,
-                # [ပြင်ဆင်ပြီး] သာမန်ဒေါင်းလုဒ်အတွက် ios client နှင့် po_token ပေါင်းစပ်ခြင်း
+                # သာမန်ဒေါင်းလုဒ်အတွက် ios client နှင့် po_token ပေါင်းစပ်ခြင်း
                 "extractor_args": {
                     "youtube": {
                         "player_client": ["ios", "android"],
