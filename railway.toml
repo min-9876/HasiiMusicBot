@@ -1,0 +1,9 @@
+[build]
+builder = "NIXPACK"
+
+[providers.node]
+pkgs = ["ffmpeg", "deno"]
+
+[deploy]
+startCommand = "python3 -m HasiiMusic"
+restartPolicy = "on-failure"
