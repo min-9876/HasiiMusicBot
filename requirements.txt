@@ -2,20 +2,7 @@
 # requirements.txt - Python Dependencies
 # ==============================================================================
 # This file lists all Python packages required for ˹ʜᴀꜱɪɪ ᴍᴜꜱɪᴄ˼.
-
 # Installation: pip install -r requirements.txt
- 
-# Key Dependencies:
-# - aiohttp: Async HTTP client for API requests
-# - kurigram (Pyrogram): Telegram MTProto API framework
-# - pillow: Image processing for thumbnails
-# - psutil: System monitoring (CPU, RAM, disk usage)
-# - pymongo: MongoDB database driver
-# - pytgcrypto: Telegram encryption layer
-# - py-tgcalls: Voice chat streaming library
-# - py-yt-search: YouTube search without API
-# - python-dotenv: Load environment variables from .env
-# - yt-dlp: YouTube video/audio downloader
 # ==============================================================================
 
 aiohttp~=3.13.5
@@ -25,6 +12,8 @@ psutil~=7.2.2
 pymongo~=4.17.0
 pytgcrypto~=1.2.12
 py-tgcalls~=2.2.11
-py-yt-search~=0.6.2
+yt-search-python
 python-dotenv~=1.2.2
+
+# YouTube ဒေါင်းလုဒ် ဆာဗာပိတ်ဆို့မှုများကို ကျော်ဖြတ်ရန် Git မူရင်း Source မှ တိုက်ရိုက်ဆွဲယူခြင်း
 yt-dlp[default] @ git+https://github.com/yt-dlp/yt-dlp.git
